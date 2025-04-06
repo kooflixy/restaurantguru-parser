@@ -8,3 +8,5 @@ for rest in data:
     for key in rdict.keys():
         r += f'{key}={rdict[key]}, '
     print(r)
+
+# Print found restaurant list by city
