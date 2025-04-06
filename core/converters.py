@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 
 from classes.restaurant import RestaurantDTO
+from classes.found_restaurant import FoundRestaurantDTO
 
 
 class SoupConverter:
@@ -116,3 +117,41 @@ class SoupConverter:
         )
 
         return restaurant
+    
+    @staticmethod
+    def to_found_restaurant(soup: BeautifulSoup) -> FoundRestaurantDTO:
+
+        name = (
+            soup
+            .find('h3', class_='item__title')
+            .text
+            .strip()
+        )
+        name = name[name.find(' ')+1:]
+
+        type = (
+            soup
+            .find('span', class_='grey')
+        )
+        if type:
+            type = type.text.strip()
+
+        url = (
+            soup
+            .find('a', class_=['notranslate', 'title_url'])
+            .attrs
+            ['href']
+        )
+
+        return FoundRestaurantDTO(
+            name=name,
+            type=type,
+            url=url,
+        )
+
+    @staticmethod
+    def to_found_restaurant_list(soup: BeautifulSoup) -> list[FoundRestaurantDTO]:
+        restaurants_soups = soup.find_all('div', class_=['restaurant_row', 'show', 'words_review_link', 'with_snippet'])
+        restaurants_list = [SoupConverter.to_found_restaurant(restaurants_soup) for restaurants_soup in restaurants_soups]
+
+        return restaurants_list

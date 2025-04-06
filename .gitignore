@@ -179,3 +179,5 @@ venv/
 # Python VS Code debug
 .vscode/
 test.py
+
+restaurants.txt
