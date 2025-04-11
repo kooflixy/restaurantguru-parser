@@ -1,3 +1,4 @@
+import os
 from core.parser import RestaurantGuruParser
 from core.export import RestaurantDTOExporter
 
@@ -9,5 +10,7 @@ res = []
 a = 1
 for rest in data:
     res.append(RestaurantGuruParser.get_restaurant(rest.url))
+
+if not os.path.exists('upload'): os.mkdir('upload')
 
 RestaurantDTOExporter.to_excel(f'upload/{city.lower()}.xlsx', res)
