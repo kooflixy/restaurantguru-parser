@@ -69,39 +69,43 @@ class SoupConverter:
                 ['href']
             )
 
+
         phone_number = (
             soup
             .find(id='call_wrap')
-            .text
-            .strip()
         )
+        if phone_number:
+            phone_number = phone_number.text.strip()
 
         description = (
             soup
             .find(class_='description')
-            .text
-            .strip()
         )
+        if description:
+            description = description.text.strip()
+
 
         rating_field = (
             soup
             .find('div', class_=['card__rating-stars', 'card__rating-stars--tapscroll'])
         )
-
-        number_of_ratings = (
-            rating_field
-            .find('span', class_='rating-stars__text')
-            .text
-        )
-        number_of_ratings = int(number_of_ratings[:-7])
-        
-        rating = (
-            rating_field
-            .find('div', class_='rating-stars__fill')
-            .attrs
-            ['style']
-        )
-        rating = round(int(rating[6:-1])/20, 2)
+        number_of_ratings = None
+        rating = None
+        if rating_field:
+            number_of_ratings = (
+                rating_field
+                .find('span', class_='rating-stars__text')
+                .text
+            )
+            number_of_ratings = int(number_of_ratings[:-7])
+            
+            rating = (
+                rating_field
+                .find('div', class_='rating-stars__fill')
+                .attrs
+                ['style']
+            )
+            rating = round(int(rating[6:-1])/20, 2)
 
         restaurant = RestaurantDTO(
             name=name,
