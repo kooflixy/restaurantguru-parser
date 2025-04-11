@@ -1,6 +1,6 @@
 from core.parser import RestaurantGuruParser
 
-rest = RestaurantGuruParser.get_restaurant('https://restaurantguru.ru/Teromok-Shemursha')
+rest = RestaurantGuruParser.get_restaurant('your_restaurant_url')
 
 rdict = rest.__dict__
 for key in rdict.keys():
