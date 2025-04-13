@@ -21,7 +21,6 @@ Install my-project with npm
 
 - Run the main.py file.
 - Enter city slug 
-![](https://github.com/kooflixy/gestaurantguru-parser/images/city_slug.jpg)
+![](https://github.com/kooflixy/restaurantguru-parser/blob/main/images/city_slug.jpg)
 - Excel spreadsheet with all restaurants in the city is exported to uplaod/{city_slug}.xlsx
-![](https://github.com/kooflixy/gestaurantguru-parser/images/work_example.jpg)
-
+![](https://github.com/kooflixy/restaurantguru-parser/blob/main/images/work_example.jpg)
