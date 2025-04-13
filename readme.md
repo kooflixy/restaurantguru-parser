@@ -20,7 +20,12 @@ Install my-project with npm
 ## Usage/Examples
 
 - Run the main.py file.
-- Enter city slug 
-![](https://github.com/kooflixy/restaurantguru-parser/blob/main/images/city_slug.jpg)
-- Excel spreadsheet with all restaurants in the city is exported to uplaod/{city_slug}.xlsx
-![](https://github.com/kooflixy/restaurantguru-parser/blob/main/images/work_example.jpg)
+- Enter city slug  
+![city_slug.jpg](https://github.com/kooflixy/gestaurantguru-parser/images/city_slug.jpg)
+- Excel spreadsheet with all restaurants in the city is exported to uplaod/{city_slug}.xlsx  
+![work_example.jpg](https://github.com/kooflixy/gestaurantguru-parser/images/work_example.jpg)
+
+
+## Tech Stack
+
+**Client:** [CloudScraper](https://pypi.org/project/cloudscraper/), [Requests](https://pypi.org/project/requests/), [Pandas](https://pypi.org/project/pandas/), [Pydantic](https://pypi.org/project/pydantic/), [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/)
