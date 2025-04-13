@@ -92,20 +92,21 @@ class SoupConverter:
         number_of_ratings = None
         rating = None
         if rating_field:
-            number_of_ratings = (
+            number_of_ratings_field = (
                 rating_field
                 .find('span', class_='rating-stars__text')
-                .text
             )
-            number_of_ratings = int(number_of_ratings[:-7])
+            if number_of_ratings_field:
+                number_of_ratings = number_of_ratings_field.text
+                number_of_ratings = int(number_of_ratings[:-7])
             
-            rating = (
+            rating_field2 = (
                 rating_field
                 .find('div', class_='rating-stars__fill')
-                .attrs
-                ['style']
             )
-            rating = round(int(rating[6:-1])/20, 2)
+            if rating_field2:
+                rating = rating_field2.attrs['style']
+                rating = round(int(rating[6:-1])/20, 2)
 
         restaurant = RestaurantDTO(
             name=name,
